@@ -1,0 +1,37 @@
+{
+  "name": "emotion-tracker",
+  "displayName": "Emotion Tracker",
+  "description": "VS Code extension that activates on startup and provides emotion tracking commands.",
+  "version": "0.1.0",
+  "publisher": "emotion-tracker",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.startTracking",
+        "title": "Emotion Tracker: Start Tracking"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "tsc --noEmit -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.0"
+  }
+}
