@@ -1,4 +1,7 @@
 import * as vscode from 'vscode';
+  const url=
+  "https://www.figma.com/make/pTq3wO2rjHNj0r2pxN6uyv/Untitled?p=f&t=bLRtbUVWIUmpwN0D-0&fullscreen=1&preview-route=%2Fhabits";
+  vscode.env.openExternal(vscode.Uri.parse(url));
 
 const COMMAND_START_TRACKING = 'extension.startTracking';
 
@@ -106,6 +109,9 @@ export function activate(context: vscode.ExtensionContext): void {
           vscode.window.showInformationMessage(
             'Good choice! Stretch, hydrate, and come back stronger 💪'
           );
+           vscode.env.openExternal(
+        vscode.Uri.parse('https://www.youtube.com/')
+      );
         }
       });
   };
@@ -131,6 +137,9 @@ export function activate(context: vscode.ExtensionContext): void {
       vscode.window.showInformationMessage(
         'You seem frustrated. Try simplifying the problem 😓',
         'OK'
+      );
+      vscode.env.openExternal(
+        vscode.Uri.parse('https://www.youtube.com/')
       );
     }
 
@@ -182,6 +191,13 @@ export function activate(context: vscode.ExtensionContext): void {
     }
   );
 
+  const resumeWork = vscode.commands.registerCommand(
+    'your-extension.resumeWork',
+    () => {
+      void vscode.window.showInformationMessage("Welcome back! Let's focus 🚀");
+    }
+  );
+
   // 🧹 Cleanup
   context.subscriptions.push(
     onTextChange,
@@ -191,7 +207,8 @@ export function activate(context: vscode.ExtensionContext): void {
       clearInterval(logInterval);
       clearInterval(pauseCheckInterval);
     }),
-    startTracking
+    startTracking,
+    resumeWork
   );
 }
 
